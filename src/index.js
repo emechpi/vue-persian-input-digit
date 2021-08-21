@@ -3,11 +3,16 @@ export default Vue.directive('input-digit', {
     update(el, binding) {
         const element = el.tagName === 'INPUT' ? el : el.querySelector('input')
         const event = new Event('input', { bubbles: true })
-        const isPrice = binding.value === 'price'
+        const block =
+            binding.value && binding.value.block ? binding.value.block : null
+        const delimiter =
+            binding.value && binding.value.delimiter ? binding.value.delimiter : null
+        const delimiterRgx = new RegExp(delimiter, 'g')
         if (element.value) {
-            let elementValue = isPrice
-                ? element.value.toString().replace(/,/g, '')
-                : element.value.toString()
+            let elementValue =
+                block && delimiter
+                    ? element.value.toString().replace(delimiterRgx, '')
+                    : element.value.toString()
             const previousValue = elementValue.substring(
                 0,
                 elementValue.toString().length - 1
@@ -19,7 +24,10 @@ export default Vue.directive('input-digit', {
             const convertedValue = toEnNumber(
                 testCharacter(latestCharacter) ? elementValue : previousValue
             )
-            element.value = isPrice ? addSeparator(convertedValue) : convertedValue
+            element.value =
+                block && delimiter
+                    ? addDelimiter(convertedValue, block, delimiter)
+                    : convertedValue
         }
         element.dispatchEvent(event)
     }
@@ -29,8 +37,10 @@ function testCharacter(char) {
     const numberPattern = /^[0123456789۰۱۲۳۴۵۶۷۸۹]+$/
     return numberPattern.test(char)
 }
-function addSeparator(str) {
-    return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+function addDelimiter(str, size, delimiter = '') {
+    const rgx = `\\B(?=(\\d{${size}})+(?!\\d))`
+    const replacementRgx = new RegExp(rgx, 'g')
+    return str.toString().replace(replacementRgx, delimiter)
 }
 function toEnNumber(number) {
     const toEn = {
