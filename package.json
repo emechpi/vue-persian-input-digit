@@ -1,7 +1,7 @@
 {
   "name": "vue-persian-input-digit",
-  "version": "1.0.0",
-  "description": "## Project setup ``` npm install vue-persian-input-digit --save```",
+  "version": "2.0.1",
+  "description": "a simple, Vue.js directive for persian input digit",
   "scripts": {
     "start": "babel-node src",
     "build": "rimraf lib && babel src -d lib"
@@ -11,11 +11,17 @@
     "type": "git",
     "url": "https://github.com/emechpi/vue-persian-input-digit.git"
   },
+  "files": [
+    "lib"
+  ],
   "keywords": [
     "persian",
     "input",
     "persian-number",
-    "digit"
+    "digit",
+    "separator",
+    "comma-separator",
+    "thousand-separator"
   ],
   "author": "MiladHp",
   "private": false,
@@ -24,6 +30,9 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "rimraf": "^3.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "main": "lib/index.js",
   "bugs": {
