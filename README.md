@@ -1,5 +1,6 @@
 `vue-persian-input-digit` - a simple, Vue.js directive for persian input digit.
-###use cases
+
+###Usage
 - Prevent non-digit characters (just digit numbers 0-9)
 - Convert Arabic and Persian numbers in input to English digit
 - Add separator to input value\
@@ -47,7 +48,7 @@ export default {
 </script>
 ```
 
- 2. in this case you can add ```v-input-digit={ block: number, delimiter: string }``` as a directive on element.\
+ 2. in this case you can add ```v-input-digit={ block: number, delimiter: string }``` as a directive on element.
 >```block```: A Number value that will insert delimiters in between these groups.\
 ```delimiter```: A String value indicates the delimiter to use in formatting.
 ```js
