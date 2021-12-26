@@ -1,4 +1,4 @@
-`vue-persian-input-digit` - a simple, Vue.js directive for persian input digit.
+`vue-persian-input-digit` - a simple, Vue.js directive for persian and arabic input digit.
 
 ### Usage
 - Prevent non-digit characters (just digit numbers 0-9)

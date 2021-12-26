@@ -1,6 +1,6 @@
 {
   "name": "vue-persian-input-digit",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "a simple, Vue.js directive for persian input digit",
   "scripts": {
     "start": "babel-node src",
