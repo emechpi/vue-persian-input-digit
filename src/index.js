@@ -13,21 +13,25 @@ export default Vue.directive('input-digit', {
                 block && delimiter
                     ? element.value.toString().replace(delimiterRgx, '')
                     : element.value.toString()
-            const previousValue = elementValue.substring(
-                0,
-                elementValue.toString().length - 1
-            )
-            const latestCharacter = elementValue.substring(
-                elementValue.length - 1,
-                elementValue.length
-            )
-            const convertedValue = toEnNumber(
-                testCharacter(latestCharacter) ? elementValue : previousValue
-            )
-            element.value =
-                block && delimiter
-                    ? addDelimiter(convertedValue, block, delimiter)
-                    : convertedValue
+            if(elementValue.length === 1) {
+                element.value = testCharacter(elementValue) ? toEnNumber(elementValue) : element.value
+            } else {
+                const previousValue = elementValue.substring(
+                    0,
+                    elementValue.length - 1
+                )
+                const latestCharacter = elementValue.substring(
+                    elementValue.length - 1,
+                    elementValue.length
+                )
+                const convertedValue = toEnNumber(
+                    testCharacter(latestCharacter) ? elementValue : previousValue
+                )
+                element.value =
+                    block && delimiter
+                        ? addDelimiter(convertedValue, block, delimiter)
+                        : convertedValue
+            }
         }
         element.dispatchEvent(event)
     }
