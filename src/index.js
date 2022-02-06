@@ -14,7 +14,7 @@ export default Vue.directive('input-digit', {
                     ? element.value.toString().replace(delimiterRgx, '')
                     : element.value.toString()
             if(elementValue.length === 1) {
-                element.value = testCharacter(elementValue) ? toEnNumber(elementValue) : element.value
+                element.value = testCharacter(elementValue) ? toEnNumber(elementValue) : ''
             } else {
                 const previousValue = elementValue.substring(
                     0,
