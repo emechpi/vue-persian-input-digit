@@ -84,3 +84,18 @@ export default {
 }
 </script>
 ```
+
+
+2. you can add ```postfix``` and ```prefix``` to input value.
+you should set binding values like this : ```v-input-digit={ postfix: string, prefix: string }```.
+>```postfix```: A String value that will append after the input value.\
+```prefix```: A String value that will append before the input value.
+```js
+    v-input-digit={ block: 3, delimiter: ',', postfix: 'تومان' } //150230000 =>   150,230,000 تومان 
+```
+```js
+    v-input-digit={ postfix: 'متر' } //152 =>  152 متر
+```
+```js
+    v-input-digit={ prefix: 'سال' } //1395 => سال 1395
+```
