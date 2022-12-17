@@ -32,6 +32,12 @@ export default Vue.directive('input-digit', {
                         ? addDelimiter(convertedValue, block, delimiter)
                         : convertedValue
             }
+            if(binding.value.postfix) {
+                element.value = addPostfix(element.value, binding.value.postfix)
+            }
+            if(binding.value.prefix) {
+                element.value = addPrefix(element.value, binding.value.prefix)
+            }
         }
         element.dispatchEvent(event)
     }
@@ -75,4 +81,11 @@ function toEnNumber(number) {
         ''
     )
     return enStr
+}
+
+function addPrefix(str, prefix) {
+    return `${prefix} ${str}`
+}
+function addPostfix(str, postfix) {
+    return `${str} ${postfix}`
 }
